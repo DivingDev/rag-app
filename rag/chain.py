@@ -2,13 +2,14 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import PydanticOutputParser
 from pydantic import BaseModel, Field
+from typing import List
 
 from utils.formatter import format_docs
 
 
 class Answer(BaseModel):
-    message: str = Field(description="Output message from LLM")
-    source: str | None = Field(description="Source link used")
+    message: str | List[str] = Field(description="Output message from LLM")
+    source: List[str] = Field(description="List of source link/url used")
 
 
 def build_chain(retriever, llm):
