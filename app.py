@@ -53,4 +53,5 @@ if st.button("Get Answer"):
         st.write(response.message)
 
         if response.source:
-            st.markdown(f"🔗 Source: {response.source}")
+            with st.expander("🔗 View Source"):
+                st.markdown(response.source)
